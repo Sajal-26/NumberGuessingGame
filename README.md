@@ -2,6 +2,8 @@
 
 A simple Python number guessing game with adjustable difficulty (easy, medium, hard), score tracking, and a persistent high score. Players guess a number between 1 and 100 with a limited number of attempts, receive higher/lower hints, and try to beat their high score.
 
+Project URL : https://roadmap.sh/projects/number-guessing-game
+
 ## How to Play
 
 1. **Clone the repository:**
