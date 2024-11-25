@@ -1,4 +1,3 @@
-```markdown
 # Number Guessing Game
 
 A simple Python number guessing game with adjustable difficulty (easy, medium, hard). Players guess a number between 1 and 100 with a limited number of attempts and receive higher/lower hints.
