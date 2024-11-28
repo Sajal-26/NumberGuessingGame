@@ -1,12 +1,21 @@
 import random
 import json
 import time
+import os
 
 class NumberGuessing:
+    '''
+        project link : https://roadmap.sh/projects/number-guessing-game
+    '''
 
     def __init__(self) -> None:
         print("Welcome to the Number Guessing Game!")
         print("I'm thinking of a number between 1 and 100.")
+        if not os.path.exists(os.path.abspath(os.path.join(os.path.dirname(__file__), 'hs.json'))):
+            with open('hs.json', 'w') as f:
+                json.dump({
+                    'high-score' : 0
+                }, f, indent = 4)
 
         self.__mode = "easy"
         self.__chances = 10
@@ -59,8 +68,9 @@ class NumberGuessing:
                 self.__switch_mode("hard")
 
             case _:
-                print("Wrong choice!")
-                exit()
+                print("Wrong choice!\nTry again!\n")
+                self.play()
+                
 
         
         chances = 0
@@ -68,7 +78,7 @@ class NumberGuessing:
 
         while True:
             if chances == self.__chances:
-                print("You're out of attempts!")
+                print("You're out of attempts!\nThe number was ", self.__rand_num)
                 print(f"Time elapsed : {(time.time() - t):.2f} sec\n")
                 break
 
@@ -82,8 +92,12 @@ class NumberGuessing:
                 print(f"Guessed in : {(time.time() - t):.2f} sec\n")
                 break
 
+            if chances == self.__chances:
+                print("You're out of attempts!\nThe number was ", self.__rand_num)
+                print(f"Time elapsed : {(time.time() - t):.2f} sec\n")
+                break
 
-            elif num > self.__rand_num:
+            if num > self.__rand_num:
                 print(f"Incorrect! The number is less than {num}.")
 
             else:
@@ -108,7 +122,7 @@ class NumberGuessing:
 
                 with open('hs.json', 'w') as f:
                     json.dump(hs, f, indent = 4)
-                    
+
                 exit()
 
             else:
