@@ -47,8 +47,8 @@ The code is written in Python and uses the `random`, `json`, and `time` modules.
 ## File Structure
 ```
 number_guessing_game.py   # Main Python script for the game
-hs.json                 # Stores the high score (created automatically if it doesn't exist)
-README.md                # This file
+hs.json                   # Stores the high score (created automatically if it doesn't exist)
+README.md                 # This file
 ```
 
 
