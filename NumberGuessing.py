@@ -11,13 +11,13 @@ class NumberGuessing:
     def __init__(self) -> None:
         print("Welcome to the Number Guessing Game!")
         print("I'm thinking of a number between 1 and 100.")
-        if not os.path.exists(os.path.abspath(os.path.join(os.path.dirname(__file__), 'hs.json'))):
-            with open('hs.json', 'w') as f:
+        self.__path = os.path.abspath(os.path.join(os.path.dirname(__file__), "hs.json"))
+        if not os.path.exists(self.__path):
+            with open(self.__path, 'w') as f:
                 json.dump({
                     'high-score' : 0
                 }, f, indent = 4)
 
-        self.__mode = "easy"
         self.__chances = 10
         self.__score = 0
         self.__rand_num = random.randint(1, 100)
@@ -32,7 +32,6 @@ class NumberGuessing:
             Returns:
                 None
         '''
-        self.__mode = mode
         print(f"Great! You have selected the {mode.title()} difficulty level.")
 
         if mode == "easy":
@@ -114,13 +113,13 @@ class NumberGuessing:
 
             elif optn == 'n':
                 print("Thank you for playing!")
-                with open('hs.json', 'r') as f:
+                with open(self.__path, 'r') as f:
                     hs = json.load(f)
 
                 if hs.get('high-score') < self.__score:
                     hs['high-score'] = self.__score
 
-                with open('hs.json', 'w') as f:
+                with open(self.__path, 'w') as f:
                     json.dump(hs, f, indent = 4)
 
                 exit()
